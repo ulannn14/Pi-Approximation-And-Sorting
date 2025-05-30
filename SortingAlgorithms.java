@@ -38,6 +38,66 @@ public class SortingAlgorithms {
         }
     }
 
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+
+        swap(arr, i + 1, high);
+        return i + 1;
+    }
+
+public static void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+
+            merge(arr, left, mid, right);
+        }
+    }
+
+    private static void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        int[] L = new int[n1 + 1];
+        int[] R = new int[n2 + 1];
+
+        for (int i = 1; i <= n1; i++)
+            L[i] = arr[left + i - 1];
+        for (int j = 1; j <= n2; j++)
+            R[j] = arr[mid + j];
+
+        L[n1 + 1] = Integer.MAX_VALUE; // Sentinel
+        R[n2 + 1] = Integer.MAX_VALUE; // Sentinel
+
+        int i = 1, j = 1;
+
+        for (int k = left; k <= right; k++) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i++];
+            } else {
+                arr[k] = R[j++];
+            }
+        }
+    }
+    
     public static void main(String[] args) {
         int N = 100;
         int MAX_VALUE = 100;
