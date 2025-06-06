@@ -132,10 +132,6 @@ public static void mergeSort(int[] arr, int left, int right) {
             System.out.print(numbers[i] + " "); 
         }
 
-
-
-
-
         /* 
           // N[1] based
         int[] numbers = new int[N + 1];
@@ -147,17 +143,18 @@ public static void mergeSort(int[] arr, int left, int right) {
 
         // sortings
         //mergeSort(numbers, 1, N);
-        bubbleSort(numbers, N);
+        //bubbleSort(numbers, N);
 
         // N[0] based
         // for (int i = 0; i < N; i++) { System.out.printf("%d ", numbers[i]); }
 
         // N[1] based
         
+        /* 
         System.out.println("\n\nSorted numbers:");
-        for (int i = 1; i <= N; i++) { 
-            System.out.printf("%d ", numbers[i]); 
+        for (int i = 0; i < N; i++) {
+            System.out.printf("%d ", numbers[i]);
         }
-
+        */
     }
 }
