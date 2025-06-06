@@ -109,7 +109,7 @@ public static void mergeSort(int[] arr, int left, int right) {
         int[] numbers = new int[N + 1]; for (int i = 1; i <= N; i++) { numbers[i] = (int) (Math.random() * MAX_VALUE); System.out.print(numbers[i] + " ");}
 
         // sortings
-        selectionSort(numbers, N);
+        mergeSort(numbers, 1, N);
 
         // N[0] based
         // for (int i = 0; i < N; i++) { System.out.printf("%d ", numbers[i]); }
