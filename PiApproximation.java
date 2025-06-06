@@ -3,9 +3,9 @@ import java.util.Random;
 // PROBLEM: r goes from 0 to 1, so (r+1)^2 siya, pero hindi nattranslate sa printing ng last
 
 public class PiApproximation {
-    public static void doubleForLoop(long r, long dividerForPrint) {
+    public static void doubleForLoop(long n, long dividerForPrint) {
         long insideTheCircleCounter = 0, currentSample = 0, x=0, y=0;
-        //long r = 10000; 
+        long r = (long) Math.sqrt(n); // r is the radius, sqrt(n) gives us the number of samples in one dimension
         double dividedX = 0, dividedXsquared, dividedY = 0, dividedYsquared, piApprox = 0.0;
         
         for (x = 0; x <= r; x++) {
@@ -19,9 +19,7 @@ public class PiApproximation {
                 if ((dividedXsquared) + (dividedYsquared) <= 1)
                     insideTheCircleCounter++;
 
-                // Printing of pi approximation at certain intervals System.out.printf("dividedX: %.6f, dividedY: %.6f%n", dividedX, dividedY);
-
-                if (currentSample % (r*dividerForPrint) == 0) {
+                if (currentSample % dividerForPrint == 0) {
                     piApprox = ((double) insideTheCircleCounter / currentSample) * 4.0;
                     System.out.printf("After %,d samples, π ≈ %.6f%n", currentSample, piApprox);
                 }
@@ -33,10 +31,8 @@ public class PiApproximation {
     }
 
 
-    public static void singleForLoop(long r, long dividerForPrint) {
+    public static void singleForLoop(long n, long dividerForPrint) {
         long insideTheCircleCounter = 0, currentSample = 0;
-        //long r = 10000;
-        long n = (r+1)*(r+1);
         double piApprox = 0.0;
         Random rand = new Random();
 
@@ -52,7 +48,7 @@ public class PiApproximation {
             }
 
             currentSample = i+1;
-            if (currentSample % (r*dividerForPrint) == 0) {
+            if (currentSample % dividerForPrint == 0) {
                 piApprox = ((double) insideTheCircleCounter / currentSample) * 4.0;
                 System.out.printf("After %,d samples, π ≈ %.6f%n", currentSample, piApprox);
             }
@@ -62,12 +58,11 @@ public class PiApproximation {
     }
 
     public static void main(String[] args) {
-        long r = 100000, dividerForPrint = 1000;
+        long n = 100000, dividerForPrint = 50000;
         System.out.println("\nOne Loop Results: ");
-        singleForLoop(r, dividerForPrint);
+        singleForLoop(n, dividerForPrint);
         System.out.println("\nTwo Loops Results: ");
-        doubleForLoop(r, dividerForPrint);
+        doubleForLoop(n, dividerForPrint);
         System.out.println("End of Program");
-
     }
 }
