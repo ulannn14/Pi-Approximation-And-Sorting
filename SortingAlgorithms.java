@@ -6,19 +6,19 @@ public class SortingAlgorithms {
     }
 
     public static void bubbleSort(int numbers[], int N) {
-        for (int i = N; i >= 1; i--) {
-            for (int j = 2; j <= i; j++) {
-                if (numbers[j - 1] > numbers[j]) {
-                    swap(numbers, j-1, j);
+        for (int i = N - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (numbers[j] > numbers[j + 1]) {
+                swap(numbers, j, j + 1);
                 }
             }
         }
     }
 
     public static void selectionSort(int numbers[], int N) {
-        for (int i = 1; i <= N; i++) {
+        for (int i = 0; i <= N-1; i++) {
             int minIndex = i;
-            for (int j = i+1; j <= N; j++) {
+            for (int j = i + 1; j < N; j++) {
                 if (numbers[j] < numbers[minIndex]) {
                     minIndex = j;
                 }
@@ -29,9 +29,9 @@ public class SortingAlgorithms {
 
     public static void insertionSort(int numbers[], int N) {
         int i;
-        for (int j = 2; j <= N; j++) {
+        for (int j = 1; j < N; j++) {
             int key = numbers[j];
-            for (i = j-1; i >= 1 && numbers[i] > key; i--) {
+            for (i = j-1; i >= 0 && numbers[i] > key; i--) {
                 numbers[i + 1] = numbers[i];
             }
             numbers[i+1] = key;
@@ -61,7 +61,7 @@ public class SortingAlgorithms {
         return i + 1;
     }
 
-public static void mergeSort(int[] arr, int left, int right) {
+    public static void mergeSort(int[] arr, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
 
@@ -76,47 +76,58 @@ public static void mergeSort(int[] arr, int left, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
 
-        int[] L = new int[n1 + 1];
-        int[] R = new int[n2 + 1];
+        int[] L = new int[n1];
+        int[] R = new int[n2];
 
-        for (int i = 1; i <= n1; i++)
-            L[i] = arr[left + i - 1];
-        for (int j = 1; j <= n2; j++)
-            R[j] = arr[mid + j];
+        for (int i = 0; i < n1; i++)
+            L[i] = arr[left + i];
+        for (int j = 0; j < n2; j++)
+            R[j] = arr[mid + 1 + j];
 
-        L[n1 + 1] = Integer.MAX_VALUE; // Sentinel
-        R[n2 + 1] = Integer.MAX_VALUE; // Sentinel
+        int i = 0, j = 0, k = left;
 
-        int i = 1, j = 1;
-
-        for (int k = left; k <= right; k++) {
+        while (i < n1 && j < n2) {
             if (L[i] <= R[j]) {
-                arr[k] = L[i++];
+                arr[k++] = L[i++];
             } else {
-                arr[k] = R[j++];
+                arr[k++] = R[j++];
             }
         }
+
+        while (i < n1) {
+            arr[k++] = L[i++];
+        }
+
+        while (j < n2) {
+            arr[k++] = R[j++];
+        }
     }
+
     
     public static void main(String[] args) {
         int N = 100;
         int MAX_VALUE = 100;
 
-        /*  // N[0] based
-        int[] numbers = new int[N]; for (int i = 0; i < N; i++) { numbers[i] = (int) (Math.random() * 10000); System.out.print(numbers[i] + " "); } */
-
-          // N[1] based
-        int[] numbers = new int[N + 1]; for (int i = 1; i <= N; i++) { numbers[i] = (int) (Math.random() * MAX_VALUE); System.out.print(numbers[i] + " ");}
-
-        // sortings
-        mergeSort(numbers, 1, N);
-
         // N[0] based
-        // for (int i = 0; i < N; i++) { System.out.printf("%d ", numbers[i]); }
+        int[] numbers = new int[N]; for (int i = 0; i < N; i++) { numbers[i] = (int) (Math.random() * 10000); System.out.print(numbers[i] + " "); }
 
         // N[1] based
+        //int[] numbers = new int[N + 1]; for (int i = 1; i <= N; i++) { numbers[i] = (int) (Math.random() * MAX_VALUE); System.out.print(numbers[i] + " ");}
+
+        // sortings
+        // selectionSort(numbers, N);  
+        // bubbleSort(numbers, N); 
+        //insertionSort(numbers, N); 
+        // quickSort(numbers, 0, N - 1); 
+        // mergeSort(numbers, 0, N - 1); 
+
+        // N[0] based
         System.out.println("\n\nSorted numbers:");
-        for (int i = 1; i <= N; i++) { System.out.printf("%d ", numbers[i]); }
+        for (int i = 0; i < N; i++) { System.out.printf("%d ", numbers[i]); System.out.println();}
+
+        // N[1] based
+        //System.out.println("\n\nSorted numbers:");
+        //for (int i = 1; i <= N; i++) { System.out.printf("%d ", numbers[i]); }
 
     }
 }
