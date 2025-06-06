@@ -1,9 +1,31 @@
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class SortingAlgorithms {
     public static void swap(int[] numbers, int i, int j) {
         int temp = numbers[i];
         numbers[i] = numbers[j];
         numbers[j] = temp;
     }
+
+    public static ArrayList<Integer> populateArrayFromFile(String filename) {
+        ArrayList<Integer> tempList = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                tempList.add(Integer.parseInt(line.trim())); // Just parse the single number per line
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return tempList; 
+    }
+
+    // sorting
 
     public static void bubbleSort(int numbers[], int N) {
         for (int i = N - 1; i >= 1; i--) {
@@ -105,29 +127,32 @@ public class SortingAlgorithms {
 
     
     public static void main(String[] args) {
-        int N = 100;
-        int MAX_VALUE = 100;
-
+        int N = 0;
+        String filename = "sampleOf50.csv";
         // N[0] based
-        int[] numbers = new int[N]; for (int i = 0; i < N; i++) { numbers[i] = (int) (Math.random() * 10000); System.out.print(numbers[i] + " "); }
+        ArrayList<Integer> tempList = populateArrayFromFile(filename);
+        N = tempList.size();
 
-        // N[1] based
-        //int[] numbers = new int[N + 1]; for (int i = 1; i <= N; i++) { numbers[i] = (int) (Math.random() * MAX_VALUE); System.out.print(numbers[i] + " ");}
+        // create an array from the ArrayList, N[0] based
+        int[] numbers = new int[N]; 
+        numbers = tempList.stream().mapToInt(i->i).toArray();
+        for (int i = 0; i < N; i++) {  
+            System.out.print(numbers[i] + " "); 
+        }
 
         // sortings
         // selectionSort(numbers, N);  
         // bubbleSort(numbers, N); 
-        //insertionSort(numbers, N); 
+        // insertionSort(numbers, N); 
+        
         // quickSort(numbers, 0, N - 1); 
-        // mergeSort(numbers, 0, N - 1); 
+         mergeSort(numbers, 0, N - 1); 
 
         // N[0] based
         System.out.println("\n\nSorted numbers:");
-        for (int i = 0; i < N; i++) { System.out.printf("%d ", numbers[i]); System.out.println();}
-
-        // N[1] based
-        //System.out.println("\n\nSorted numbers:");
-        //for (int i = 1; i <= N; i++) { System.out.printf("%d ", numbers[i]); }
+        for (int i = 0; i < N; i++) { 
+            System.out.printf("%d ", numbers[i]); 
+        }
 
     }
 }
