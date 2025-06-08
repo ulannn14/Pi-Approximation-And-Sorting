@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -50,7 +51,7 @@ public class SortingAlgorithms {
 
     // sorting
 
-    public static void bubbleSort(int numbers[], PrintWriter writer, int N) {
+    public static void bubbleSortInversion(int numbers[], PrintWriter writer, int N) {
         int comparisons = 0;
         ArrayList<Integer> xInversions = new ArrayList<>();
         ArrayList<Integer> yComparisons = new ArrayList<>();
@@ -71,6 +72,38 @@ public class SortingAlgorithms {
             System.out.printf("%d, %d\n", xInversions.get(k), yComparisons.get(k));
         }
     }
+
+
+
+    public static int getDistanceFromSorted(int[] numbers, int sorted[]) {
+        int mismatchCount = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] != sorted[i]) {
+                mismatchCount++;
+            }
+        }
+        return mismatchCount;
+    }
+
+
+    public static void bubbleSortDistanceFromSorted(int numbers[], int sorted[], PrintWriter writer, int N) {
+        long comparisons = 0;
+        for (int i = N - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                comparisons++;
+                if (numbers[j] > numbers[j + 1]) {
+                    swap(numbers, j, j + 1);
+                }
+
+                if (comparisons % 100000 == 0 ) {
+                    System.out.println("Comparisons: " + comparisons + " Distance from sorted: " + getDistanceFromSorted(numbers, sorted));
+                }
+            }
+        }
+        System.out.println("Comparisons: " + comparisons + " Distance from sorted: " + getDistanceFromSorted(numbers, sorted));
+    }
+
+
 
     public static void selectionSort(int numbers[], PrintWriter writer, int N) {
         for (int i = 0; i <= N-1; i++) {
@@ -163,6 +196,8 @@ public class SortingAlgorithms {
             // create an array from the ArrayList, N[0] based
             int[] numbers = new int[N]; 
             numbers = tempList.stream().mapToInt(i->i).toArray();
+            int[] sorted = numbers.clone();
+            Arrays.sort(sorted);
             for (int i = 0; i < N; i++) {
                 System.out.print(numbers[i] + " ");
                 writer.print(numbers[i] + " ");
@@ -170,7 +205,8 @@ public class SortingAlgorithms {
 
             // sortings
             //selectionSort(numbers, writer, N);  
-             bubbleSort(numbers, writer, N); 
+            //bubbleSortInversion(numbers, writer, N);
+            bubbleSortDistanceFromSorted(numbers, sorted, writer, N); 
             // insertionSort(numbers, writer, N); 
             // quickSort(numbers, writer, 0, N - 1); 
             // mergeSort(numbers, writer, 0, N - 1); 
