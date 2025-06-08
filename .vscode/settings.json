@@ -1,8 +1,10 @@
 {
   "files.exclude": {
+    "**/*.xlsx": true,
     "**/~$*.xlsx": true
   },
-  "java.project.excludeFolders": [
-    "**/~$*.xlsx"
+  "java.project.resourceFilters": [
+    "glob:**/*.xlsx",
+    "glob:**/~$*.xlsx"
   ]
 }
