@@ -1,0 +1,51 @@
+🔰 Basic Symbols
+• ^ – Start of line
+Halimbawa: ^a → nagsisimula sa a
+
+• $ – End of line
+Halimbawa: ion$ → nagtatapos sa ion
+
+• . – Any single character
+Halimbawa: ^...$ → eksaktong 3 characters
+
+• [] – Character set
+Halimbawa: ^[a-m] → nagsisimula sa letter a to m
+
+• | – OR operator
+Halimbawa: a|b → a o b
+
+🔁 Quantifiers
+• + – 1 or more
+Halimbawa: a+b+ → 1 or more a, followed by 1 or more b
+
+• * – 0 or more (optional)
+Halimbawa: a* → kahit walang a, okay lang
+
+• ? – 0 or 1 only
+Halimbawa: a? → pwede wala or isang a lang
+
+• .* – anything (kahit ilang characters)
+Halimbawa: M.* → nagsisimula sa M, then anything after
+
+🧩 Grouping and References
+• () – Group
+Halimbawa: ^(...)(...)$ → dalawang group ng tig-3 characters
+
+• $1, $2, etc. – Reference sa group
+Halimbawa: Replace with $2$1 → pagbaliktarin yung dalawang group
+
+🧪 Sample Pattern Explanation
+• .*k(um|in)?ain.*
+✅ Match sa anumang string na may:
+• kahit ano sa simula (.*)
+• tapos may k
+• optionally may um OR in ((um|in)?)
+• tapos may ain
+• tapos kahit ano ulit sa dulo (.*)
+
+🧵 Other Sample
+• M...? +.*
+✅ Match kung:
+• M, then any 3 characters (...?)
+• at least one space (_+ or +)
+• tapos anything after (.*)

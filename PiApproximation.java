@@ -40,6 +40,7 @@ public class PiApproximation {
             //double x = rand.nextDouble(); // [0,1)
             //double y = rand.nextDouble(); // [0,1)
 
+            // randomization 0 to 1
             double x = (i == n - 1) ? 1.0 : rand.nextDouble();
             double y = (i == n - 1) ? 1.0 : rand.nextDouble();
 
@@ -58,7 +59,7 @@ public class PiApproximation {
     }
 
     public static void main(String[] args) {
-        long n = 100000, dividerForPrint = 50000;
+        long n = 1000000000, dividerForPrint = 1000000000;
         System.out.println("\nOne Loop Results: ");
         singleForLoop(n, dividerForPrint);
         System.out.println("\nTwo Loops Results: ");

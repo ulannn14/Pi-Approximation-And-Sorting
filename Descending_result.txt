@@ -1,0 +1,37 @@
+
+Bubble Sort Distance from Sorted
+Index 90000 Comparisons: 949995000 Distance from sorted: 90000
+Index 80000 Comparisons: 1799990000 Distance from sorted: 80000
+Index 70000 Comparisons: 2549985000 Distance from sorted: 70000
+Index 60000 Comparisons: 3199980000 Distance from sorted: 60000
+Index 50000 Comparisons: 3749975000 Distance from sorted: 50000
+Index 40000 Comparisons: 4199970000 Distance from sorted: 40000
+Index 30000 Comparisons: 4549965000 Distance from sorted: 30000
+Index 20000 Comparisons: 4799960000 Distance from sorted: 20000
+Index 10000 Comparisons: 4949955000 Distance from sorted: 10000
+Index 0 Comparisons: 4999950000 Distance from sorted: 0
+
+Selection Sort Distance from Sorted
+Index 0 Comparisons: 99999 Distance from sorted: 99998
+Index 10000 Comparisons: 950084999 Distance from sorted: 79998
+Index 20000 Comparisons: 1800069999 Distance from sorted: 59998
+Index 30000 Comparisons: 2550054999 Distance from sorted: 39998
+Index 40000 Comparisons: 3200039999 Distance from sorted: 19998
+Index 50000 Comparisons: 3750024999 Distance from sorted: 0
+Index 60000 Comparisons: 4200009999 Distance from sorted: 0
+Index 70000 Comparisons: 4549994999 Distance from sorted: 0
+Index 80000 Comparisons: 4799979999 Distance from sorted: 0
+Index 90000 Comparisons: 4949964999 Distance from sorted: 0
+Index 99999 Comparisons: 4999950000 Distance from sorted: 0
+
+Insertion Sort Distance from Sorted
+Index 10000 Comparisons: 10000 Distance from sorted: 100000
+Index 20000 Comparisons: 20000 Distance from sorted: 100000
+Index 30000 Comparisons: 30000 Distance from sorted: 100000
+Index 40000 Comparisons: 40000 Distance from sorted: 100000
+Index 50000 Comparisons: 50000 Distance from sorted: 100000
+Index 60000 Comparisons: 60000 Distance from sorted: 100000
+Index 70000 Comparisons: 70000 Distance from sorted: 100000
+Index 80000 Comparisons: 80000 Distance from sorted: 100000
+Index 90000 Comparisons: 90000 Distance from sorted: 100000
+Index 99999 Comparisons: 99999 Distance from sorted: 0
